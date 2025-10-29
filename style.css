@@ -1,0 +1,670 @@
+:root {
+    --dark-blue: #1a2035;
+    --medium-blue: #232a41;
+    --light-blue: #3e4a6e;
+    --green: #1fc226;
+    --red-bin: #ff1100;
+    --red-dead: #1f0200;
+    --orange-unknown: #ff9800;
+    --yellow-btn: #ffc107;
+    --orange-btn: #fd7e14;
+    --text-color-light: #f8f9fa;
+    --text-color-dark: #212529;
+    --light: var(--dark-blue);
+    --border: var(--light-blue);
+    --shadow: rgba(0, 0, 0, 0.3);
+    --lighter: var(--medium-blue);
+    --text-muted: #aaaaaa;
+    --text: var(--text-color-light);
+}
+
+/* Base & Typography */
+*,
+:after,
+:before {
+    box-sizing: border-box;
+}
+
+html {
+    font-family: sans-serif;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--dark-blue);
+    margin: 0;
+    color: var(--text-color-light);
+}
+
+/* Layout & Grid System */
+.container {
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+@media (min-width:768px) {
+    .container {
+        width: 750px;
+    }
+}
+
+@media (min-width:992px) {
+    .container {
+        width: 970px;
+    }
+    .col-md-4,
+    .col-md-6,
+    .col-md-8 {
+        float: left;
+    }
+    .col-md-8 {
+        width: 66.66666667%;
+    }
+    .col-md-6 {
+        width: 50%;
+    }
+    .col-md-4 {
+        width: 33.33333333%;
+    }
+    .col-md-offset-2 {
+        margin-left: 16.66666667%;
+    }
+}
+
+@media (min-width:1200px) {
+    .container {
+        width: 1170px;
+    }
+}
+
+/*
+    *** এইখানে পরিবর্তন করা হয়েছে ***
+    কলামের মাঝখানের গ্যাপ কমানোর জন্য `row` এর নেগেটিভ মার্জিন এবং `col-*` এর প্যাডিং এর মান কমানো হয়েছে।
+*/
+.row {
+    margin-left: -5px;
+    margin-right: -5px;
+}
+
+.col-md-4,
+.col-md-6,
+.col-md-8 {
+    position: relative;
+    min-height: 1px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+/*Navigation (Header)*/
+.navigations {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--medium-blue);
+    padding: 0 2rem;
+    height: 80px;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.site-header {
+    display: flex;
+    align-items: center;
+    color: var(--text-color-light);
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.menu-container {
+    position: relative;
+    display: inline-block;
+    z-index: 999;
+}
+
+.header-logo {
+    height: 50px;
+    margin-right: 15px;
+}
+
+.menu-toggle:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.menu-container {
+    position: relative;
+    display: inline-block;
+    z-index: 999;
+}
+
+.menu-toggle {
+    font-size: 26px;
+    cursor: pointer;
+    color: white;
+    padding: 8px 12px;
+    transition: background 0.3s;
+}
+
+/* Dropdown menu base style */
+.dropdown-menu {
+    position: absolute;
+    right: 0;
+    top: 110%;
+    background-color: #060079;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    border-radius: 6px;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    min-width: 220px;
+    opacity: 0;
+    transform: translateY(-10px);
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+}
+
+/* Show dropdown */
+.dropdown-menu.show {
+    opacity: 1;
+    transform: translateY(0);
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.dropdown-menu li a {
+    display: block;
+    padding: 12px 16px;
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+    border-bottom: 1px solid #eee;
+    transition: background 0.2s;
+}
+
+.dropdown-menu li a:hover {
+    background-color: #f5f5f5;
+}
+
+.dropdown-menu li:last-child a {
+    border-bottom: none;
+}
+
+.dropdown-menu li a:hover {
+    background-color: #fa0707;
+}
+
+.dropdown-menu li:last-child a {
+    border-bottom: none;
+}
+
+/* Form Elements */
+label {
+    display: inline-block;
+    max-width: 100%;
+    margin-bottom: 5px;
+    color: var(--text-color-light);
+    font-weight: 700;
+}
+
+.form-control {
+    display: block;
+    width: 100%;
+    height: 45px;
+    padding: 10px 15px;
+    font-size: 15px;
+    line-height: 1.42857143;
+    color: var(--text-color-light);
+    background-color: var(--medium-blue);
+    background-image: none;
+    border: 1px solid var(--light-blue);
+    border-radius: 4px;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+textarea.form-control {
+    height: 335px;
+    resize: vertical;
+}
+
+input[type=search] {
+    -webkit-appearance: none;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+.input-group {
+    position: relative;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+}
+
+.input-group-addon {
+    width: auto;
+    flex-shrink: 0;
+    padding: 10px 15px;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1;
+    color: #2c3e50;
+    background-color: var(--medium-blue);
+    border: 1px solid var(--light-blue);
+    border-radius: 4px;
+}
+
+.input-group-field {
+    display: flex;
+    flex-grow: 1;
+    min-width: 0;
+    vertical-align: middle;
+    border-radius: 4px;
+}
+
+/* Date সেকশনের দুটি সিলেক্টকে পাশাপাশি রাখতে */
+.input-group > select.form-control,
+.input-group-field > select.form-control {
+    flex-grow: 1;
+    min-width: 0;
+    width: auto;
+}
+
+/* CVC ইনপুটকে উপলব্ধ স্থান ব্যবহার করতে দিন */
+.input-group > input.form-control {
+    flex-grow: 1;
+    min-width: 0;
+    width: auto;
+}
+
+/* Buttons Styling */
+.btn {
+    display: inline-block;
+    margin-bottom: 0;
+    font-weight: 400;
+    text-align: center;
+    vertical-align: middle;
+    touch-action: manipulation;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid transparent;
+    white-space: nowrap;
+    padding: 10px 15px;
+    font-size: 15px;
+    line-height: 1.42857143;
+    border-radius: 4px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.btn-primary {
+    color: var(--text-color-dark);
+    background: linear-gradient(45deg, var(--yellow-btn), var(--orange-btn));
+    border-color: #000000;
+}
+
+.btn-block {
+    display: block;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.btn-block+.btn-block {
+    margin-top: 5px;
+}
+
+.btn-link {
+    display: inline-block;
+    text-decoration: none;
+    background: var(--green);
+    padding: 5px 10px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-color-light);
+    text-align: center;
+    cursor: pointer;
+    border: 2px solid transparent;
+}
+
+.form-group .btn {
+    font-weight: 700;
+}
+
+.btn-link i {
+    margin-right: 5px;
+}
+
+/* BIN Section */
+.bin-section {
+    padding: 5px 2px;
+    background-color: var(--dark-blue);
+    border-bottom: 1px solid var(--light-blue);
+}
+
+.bin-dropdown-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 3px;
+}
+
+.bin-dropdown-card {
+    flex: 1;
+    min-width: 250px;
+    font-family: Arial, sans-serif;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px var(--shadow);
+    overflow: hidden;
+    margin-bottom: 1px;
+    background-color: var(--medium-blue);
+    border: 1px solid var(--light-blue);
+}
+
+.bin-dropdown-header {
+    background-color: var(--red-bin);
+    color: var(--text-color-light);
+    padding: 10px 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+
+.bin-dropdown-title {
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.bin-dropdown-arrow {
+    transition: transform 0.3s ease;
+    font-size: 12px;
+}
+
+.bin-dropdown-arrow.down {
+    transform: rotate(180deg);
+}
+
+.bin-dropdown-details {
+    background-color: var(--medium-blue);
+    padding: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+}
+
+.bin-dropdown-details.show {
+    padding: 12px 15px;
+    max-height: 500px;
+}
+
+.bin-dropdown-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 6px;
+    font-size: 13px;
+}
+
+.bin-dropdown-label {
+    font-weight: bold;
+    color: var(--text-muted);
+    min-width: 80px;
+}
+
+.bin-dropdown-value {
+    color: var(--text-color-light);
+    text-align: right;
+    font-family: monospace;
+    cursor: pointer;
+}
+
+.bin-live {
+    color: var(--green);
+    font-weight: bold;
+}
+.bin-dead {
+    color: var(--red-dead);
+    font-weight: bold;
+}
+
+/* Toast Notification */
+.toast-notification {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background-color: var(--medium-blue);
+    color: var(--text-color-light);
+    padding: 12px 24px;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+    z-index: 9999;
+    opacity: 0;
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+    font-family: 'Poppins', sans-serif;
+    pointer-events: none;
+    max-width: 90%;
+    text-align: center;
+    border-left: 4px solid var(--green);
+}
+
+.toast-notification.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+/* Copyable Elements */
+.copyable,
+.bin-dropdown-value,
+.bin-dropdown-bin,
+.bin-item code,
+.bin-detail code {
+    cursor: pointer;
+    position: relative;
+    transition: all 0.2s;
+}
+
+/* Clearfix */
+.container:after,
+.container:before,
+.nav:after,
+.nav:before,
+.row:after,
+.row:before {
+    content: " ";
+    display: table;
+}
+
+.container:after,
+.nav:after,
+.row:after {
+    clear: both;
+}
+
+/* Footer Styling */
+.main-footer {
+    text-align: center;
+    margin-top: 30px;
+    padding: 20px;
+    background-color: var(--medium-blue);
+    border-top: 2px solid var(--light-blue);
+    color: var(--text-color-light);
+}
+
+.main-footer p {
+    margin: 0;
+    font-size: 14px;
+}
+
+.main-footer a {
+    color: var(--green);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.main-footer a:hover {
+    text-decoration: underline;
+}
+
+/* Social Links */
+.social-links {
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.social-links a {
+    color: var(--text-color-light);
+    font-size: 24px;
+    transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+    color: var(--green);
+}
+
+/* Colors for live/dead/unknown (Used within BIN section) */
+.live {
+    color: var(--green);
+}
+.dead {
+    color: var(--red-dead);
+}
+.unknown {
+    color: var(--orange-unknown);
+}
+
+/*
+    *** এইখানেও পরিবর্তন করা হয়েছে ***
+    CVC এবং Quantity ফিল্ডের কলামগুলোকে ছোট স্ক্রিনে নিচে নিচে নিয়ে আসার জন্য
+    প্রয়োজন নেই এমন Flexbox স্টাইলগুলো মুছে ফেলা হয়েছে।
+*/
+@media (max-width: 768px) {
+    /* Header layout for small screens */
+    .navigations {
+        flex-direction: row;
+        align-items: center;
+        height: 60px;
+        padding: 0 1rem;
+        justify-content: space-between;
+    }
+
+    .site-header {
+        width: 100%;
+        justify-content: flex-start;
+        margin-bottom: 10px;
+        font-size: 20px;
+    }
+
+    .header-logo {
+        height: 40px;
+        margin-right: 10px;
+    }
+
+    /*
+      ** এই ব্লকটি পরিবর্তন করা হয়েছে **
+      .col-md-X ক্লাসগুলো ছোট স্ক্রিনে 100% প্রস্থ নেবে এবং নিচে নিচে চলে আসবে।
+      এজন্য flex-basis, max-width, width, এবং flex-wrap: nowrap স্টাইলগুলো বাদ দেওয়া হয়েছে।
+    */
+    .col-md-8,
+    .col-md-4,
+    .col-md-6 {
+        width: 100%; /* ছোট স্ক্রিনে 100% প্রস্থ নেবে */
+        float: none; /* ফ্লোটিং আচরণ বাতিল করুন */
+        padding-left: 15px; /* ডিফল্ট বুটস্ট্র্যাপ প্যাডিং ফিরিয়ে আনা হয়েছে */
+        padding-right: 15px; /* ডিফল্ট বুটস্ট্র্যাপ প্যাডিং ফিরিয়ে আনা হয়েছে */
+        box-sizing: border-box;
+    }
+
+    /*
+      ** এই ব্লকটি পরিবর্তন করা হয়েছে **
+      .row কে এখন আর flex কন্টেইনার হতে হবে না।
+    */
+    .row {
+        /* এই মিডিয়া কোয়েরিতে কোনো flexbox স্টাইল দরকার নেই, কারণ কলামগুলো নিচে চলে আসবে */
+    }
+    
+    .form-group .input-group > select.form-control,
+    .form-group .input-group .input-group-field > select.form-control {
+        flex-grow: 1;
+        min-width: 0;
+        width: auto;
+    }
+
+    /*
+      ** এই ব্লকগুলো সম্পূর্ণ বাদ দেওয়া হয়েছে **
+      কারণ এখন আর CVC এবং Quantity ফিল্ডকে ছোট স্ক্রিনে পাশাপাশি থাকার জন্য নির্দিষ্ট প্রস্থের প্রয়োজন নেই।
+    */
+    .row > .col-md-8,
+    .row > .col-md-4 {
+        /* এই স্টাইলগুলো বাদ দেওয়া হয়েছে */
+    }
+
+    .col-md-8 .input-group {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        flex-wrap: nowrap;
+        width: 100%;
+    }
+
+    .col-md-8 .input-group .input-group-addon {
+        flex-shrink: 0;
+        width: auto;
+        padding: 10px 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .col-md-8 .input-group input.form-control {
+        flex-grow: 1;
+        width: auto;
+    }
+
+    .form-group > input.form-control {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .col-md-4 .form-group > input.form-control {
+        width: 100%;
+        box-sizing: border-box;
+    }
+}
+
+/* Custom styles for CVC and Quantity to be side-by-side */
+.form-group-inline {
+    display: flex;
+    gap: 10px; /* Match gap with .input-group for date */
+    margin-bottom: 15px;
+    flex-wrap: nowrap; /* Prevent wrapping on small screens */
+}
+
+.form-group-inline .form-group {
+    flex: 1; /* Allow flex items to grow and shrink */
+    min-width: 0; /* Allow shrinking below 150px if needed */
+    margin-bottom: 0; /* Remove default margin-bottom from form-group */
+}
+
+/* Adjust input-group within form-group-inline for better alignment */
+.form-group-inline .form-group .input-group {
+    width: 100%;
+    height: 45px; /* Match height of other inputs */
+}
+
+/* Adjust input-group-addon for CVC to match date input-group-addon */
+.form-group-inline .cvc-group .input-group-addon {
+    padding: 10px 15px; /* Match padding */
+}
